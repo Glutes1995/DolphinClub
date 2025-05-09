@@ -18,6 +18,6 @@ public class Record {
     }
 
     public String toString() {
-        return "Record: " + recordTimeMin + ":" + recordTimeSec + " Date: " + recordDate + " Discipline: " + discipline + " placement: " + placement + " Location: " + location;
+        return "Record time: " + recordTimeMin + ":" + recordTimeSec + " Date: " + recordDate + " Discipline: " + discipline + " placement: " + placement + " Location: " + location;
     }
 }
