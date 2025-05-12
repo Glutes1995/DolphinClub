@@ -10,7 +10,6 @@ public class Competitive extends Member {
         super(name, age, active, paid);
         this.disciplines = disciplines;
         this.records = records;
-
     }
 
     public ArrayList<Record> getRecords() {
@@ -36,6 +35,7 @@ public class Competitive extends Member {
         for (Discipline discipline : disciplines) {
             discs += discipline + " ";
         }
+
         for (Record record : records) {
             recs += record + "\n";
         }
