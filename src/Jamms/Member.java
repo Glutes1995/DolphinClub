@@ -17,6 +17,46 @@ public class Member {
     this.paid = paid;
     }
 
+    public int getMemberID() {
+        return memberID;
+    }
+
+    public void setMemberID(int memberID) {
+        this.memberID = memberID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
     public String toString() {
         return name + " " + memberID;
     }

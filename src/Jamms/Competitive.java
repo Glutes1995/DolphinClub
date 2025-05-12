@@ -13,6 +13,22 @@ public class Competitive extends Member {
 
     }
 
+    public ArrayList<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(ArrayList<Record> records) {
+        this.records = records;
+    }
+
+    public ArrayList<Discipline> getDisciplines() {
+        return disciplines;
+    }
+
+    public void setDisciplines(ArrayList<Discipline> disciplines) {
+        this.disciplines = disciplines;
+    }
+
     @Override
     public String toString() {
         String discs = "Disciplines: ";
