@@ -58,7 +58,19 @@ public class Member {
     }
 
     public String toString() {
-        return name + " " + memberID;
+        String displayActive = "";
+        String displayPaid = "";
+        if (active) {
+            displayActive = "Yes";
+        } else {
+            displayActive = "No";
+        }
+        if (paid) {
+            displayPaid = "Yes";
+        }else {
+            displayPaid = "No";
+        }
+        return name + ";" + age + ";" + displayActive + ";" + displayPaid;
     }
 
 }
