@@ -1,10 +1,7 @@
+package Controllers;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-// Måtte implementere denne klasse pga. DRY (Don't Repeat Yourself)
-// Ellers ville der være duplicated kode i begge forrige controller klasse.....
-// (ja ved det godt, endnu klasse lol)
-// Men denne måde følger OOP.
 
 public class BaseMemberController {
     protected Scanner scanner;

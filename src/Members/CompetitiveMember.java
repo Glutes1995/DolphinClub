@@ -1,3 +1,5 @@
+package Members;
+
 import java.util.ArrayList;
 
 public class CompetitiveMember extends Member {
@@ -12,7 +14,7 @@ public class CompetitiveMember extends Member {
 
     @Override
     public String toString() {
-        return "CompetitiveMember{" +
+        return "Members.CompetitiveMember{" +
                 "discipline=" + discipline +
                 ", team='" + team + '\'' +
                 ", name='" + name + '\'' +

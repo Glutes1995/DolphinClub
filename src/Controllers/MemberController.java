@@ -1,3 +1,6 @@
+package Controllers;
+import Package.Club;
+import Members.Member;
 import java.util.Scanner;
 
 public class MemberController extends BaseMemberController {

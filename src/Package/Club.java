@@ -1,3 +1,7 @@
+package Package;
+
+import Members.Member;
+
 import java.util.ArrayList;
 
 public class Club {

@@ -1,3 +1,5 @@
+package Package;
+
 public enum Discipline {
     BUTTERFLY("Butterfly"),
     FREESTYLE("Freestyle"),

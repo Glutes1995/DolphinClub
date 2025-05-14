@@ -1,6 +1,11 @@
+package Controllers;
+import Package.Club;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import Package.Discipline;
+import Members.*;
+
 
 public class CompetitiveMemberController extends BaseMemberController {
     Club club;
