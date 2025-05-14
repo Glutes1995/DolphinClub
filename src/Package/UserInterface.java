@@ -22,7 +22,7 @@ public class UserInterface {
     }
 
     public void startProgram() {
-        System.out.println("Welcome to Dolphin Package.Club's admin panel");
+        System.out.println("Welcome to Dolphin Club's admin panel");
 
         while (true) {
             System.out.println("Enter username (admin): ");
@@ -45,7 +45,7 @@ public class UserInterface {
 
         while (true) {
             System.out.println();
-            System.out.println("1. Members.Member management");
+            System.out.println("1. Member management");
             System.out.println("2. Financial overview");
             System.out.println("3. Swimmer statistics");
             System.out.println("4. Exit");

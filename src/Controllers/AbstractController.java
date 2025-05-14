@@ -3,19 +3,26 @@ package Controllers;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BaseMemberController {
+public abstract class AbstractController implements ControllerInterface {
     protected Scanner scanner;
 
-    public BaseMemberController(Scanner scanner) {
+    public AbstractController(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    protected String getName() {
+    @Override
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    @Override
+    public String getName() {
         System.out.println("Enter name:");
         return scanner.nextLine();
     }
 
-    protected int getAge() {
+    @Override
+    public int getAge() {
         int age;
         System.out.println("Enter age:");
         while (true) {
@@ -36,7 +43,8 @@ public class BaseMemberController {
         return age;
     }
 
-    protected long getPhoneNumber() {
+    @Override
+    public long getPhoneNumber() {
         long phoneNumber = 0;
         System.out.println("Enter phone number:");
         while (true) {
@@ -52,8 +60,9 @@ public class BaseMemberController {
         return phoneNumber;
     }
 
-    protected boolean selectMembershipType() {
-        System.out.println("Does the member wish an active or passive membership?");
+    @Override
+    public boolean selectMembershipType() {
+        System.out.println("Does the member wish an active or passive membership? (1-2)");
         System.out.println("1. Active");
         System.out.println("2. Passive");
         boolean active = true;
@@ -80,7 +89,8 @@ public class BaseMemberController {
         return active;
     }
 
-    protected boolean selectPaymentStatus() {
+    @Override
+    public boolean selectPaymentStatus() {
         System.out.println("Is user paying now? 'yes' or 'no'");
         boolean paid = false;
 

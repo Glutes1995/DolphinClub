@@ -1,9 +1,11 @@
 package Controllers;
+
 import Package.Club;
 import Members.Member;
 import java.util.Scanner;
 
-public class MemberController extends BaseMemberController {
+public class MemberController extends AbstractController {
+
     private Club club;
 
     public MemberController(Scanner scanner, Club club) {

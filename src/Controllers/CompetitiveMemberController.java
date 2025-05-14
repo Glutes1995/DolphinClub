@@ -1,14 +1,15 @@
 package Controllers;
+
 import Package.Club;
+import Package.Discipline;
+import Members.CompetitiveMember;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import Package.Discipline;
-import Members.*;
 
+public class CompetitiveMemberController extends AbstractController {
 
-public class CompetitiveMemberController extends BaseMemberController {
-    Club club;
+    private Club club;
 
     public CompetitiveMemberController(Scanner scanner, Club club) {
         super(scanner);
@@ -22,10 +23,10 @@ public class CompetitiveMemberController extends BaseMemberController {
         boolean active = selectMembershipType();
         boolean paid = selectPaymentStatus();
         ArrayList<Discipline> disciplines = selectDisciplines();
-        String team = (age <=18) ? "junior" : "senior";
+        String team = (age <= 18) ? "junior" : "senior";
 
         club.addMember(new CompetitiveMember(name, age, phoneNumber, active, paid, disciplines, team));
-        System.out.println("New member: " + name + " successfully registered.");
+        System.out.println("New competitive member: " + name + " successfully registered.");
     }
 
     private ArrayList<Discipline> selectDisciplines() {
@@ -44,7 +45,7 @@ public class CompetitiveMemberController extends BaseMemberController {
                 choice = scanner.nextInt();
                 scanner.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println("Error! Please enter a number.");
+                System.out.println("Error! Please enter a valid number.");
                 scanner.nextLine();
                 continue;
             }
@@ -64,7 +65,8 @@ public class CompetitiveMemberController extends BaseMemberController {
                     selected = Discipline.BREASTSTROKE;
                     break;
                 default:
-                    System.out.println("Please choose a number between 1 and 4.");
+                    System.out.println("Error! Please choose a number between 1 and 4.");
+                    continue;
             }
 
             if (selected != null && !chosenDisciplines.contains(selected)) {

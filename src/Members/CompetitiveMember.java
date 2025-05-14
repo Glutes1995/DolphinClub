@@ -1,5 +1,5 @@
 package Members;
-
+import Package.*;
 import java.util.ArrayList;
 
 public class CompetitiveMember extends Member {
