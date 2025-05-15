@@ -25,4 +25,21 @@ public class Member {
                 ", paid=" + paid +
                 '}';
     }
+
+    public double getAnnualFee(){
+
+        //Metode til at hente kontingenttal for members
+
+        if (!active){
+            return 500;
+        }
+        
+        if (age < 18){
+            return 1000;
+        } else if (age >= 60) {
+            return 1600 * 0.75;
+        }else {
+            return 1600;
+        }
+    }
 }
