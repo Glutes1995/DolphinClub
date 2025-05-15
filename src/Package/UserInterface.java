@@ -3,6 +3,7 @@ package Package;
 import Controllers.CompetitiveMemberController;
 import Controllers.MemberController;
 import Files.FileHandler;
+import Finance.FinanceHandler;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class UserInterface {
     Club club;
     MemberController memberController;
     CompetitiveMemberController competitiveMemberController;
+    FinanceHandler financeHandler;
     FileHandler fileHandler;
 
     public UserInterface() {
@@ -19,6 +21,7 @@ public class UserInterface {
         this.club = new Club();
         this.memberController = new MemberController(scanner, club);
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
+        this.financeHandler = new FinanceHandler(club);
     }
 
     public void startProgram() {
@@ -111,9 +114,30 @@ public class UserInterface {
     }
 
     public void financeMenu() {
-        System.out.println();
-        System.out.println("1. Show unpaid members");
-        System.out.println("2. Return to main menu");
+
+        boolean b = true;
+        while (b) {
+            System.out.println();
+            System.out.println("1. Show unpaid members");
+            System.out.println("2. Show yearly payment overview");
+            System.out.println("3. Return to main menu");
+
+            try {
+                int input = scanner.nextInt();
+                scanner.nextLine();
+                switch (input) {
+                    //case 1 -> unpaidMenu();          // mangler lige nu
+                    case 2 -> System.out.println(
+                            "Forventet årlig indtægt:" +
+                                    financeHandler.getTotalAnnualIncome());
+                    case 3 -> b = false;             // gør det muligt at vende tilbage
+                    default -> System.out.println("Error! Only numbers 1-3 allowed.");
+                }
+            } catch (InputMismatchException e){
+                System.out.println("Error! Only numbers allowed");
+                scanner.nextLine();
+            }
+        }
     }
 
     public void swimmerMenu() {
