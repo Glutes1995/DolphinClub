@@ -1,5 +1,4 @@
 package Controllers;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -44,20 +43,27 @@ public abstract class AbstractController implements ControllerInterface {
     }
 
     @Override
-    public long getPhoneNumber() {
-        long phoneNumber = 0;
+    public String getPhoneNumber() {
         System.out.println("Enter phone number:");
         while (true) {
-            try {
-                phoneNumber = scanner.nextLong();
-                scanner.nextLine();
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Error! Only numbers allowed!");
-                scanner.nextLine();
+            String phoneNumber = scanner.nextLine().trim();
+
+            boolean allDigits = true;
+            for (int i = 0; i < phoneNumber.length(); i++) {
+                char c = phoneNumber.charAt(i);
+                if (c < '0' || c > '9') {
+                    allDigits = false;
+                    break;
+                }
+            }
+
+            if (allDigits) {
+                System.out.println("Phone number " + phoneNumber + " registered.");
+                return phoneNumber;
+            } else {
+                System.out.println("Error! You can only enter digits.");
             }
         }
-        return phoneNumber;
     }
 
     @Override

@@ -2,11 +2,13 @@ package Controllers;
 
 import java.util.Scanner;
 
-public interface ControllerInterface {
+interface ControllerInterface {
     Scanner getScanner();
     String getName();
     int getAge();
-    long getPhoneNumber();
+    String getPhoneNumber();
     boolean selectMembershipType();
     boolean selectPaymentStatus();
 }
+
+

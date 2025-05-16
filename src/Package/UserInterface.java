@@ -4,17 +4,19 @@ import Controllers.CompetitiveMemberController;
 import Controllers.MemberController;
 import Files.FileHandler;
 import Finance.FinanceHandler;
+import Members.Member;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
-    Scanner scanner;
-    Club club;
-    MemberController memberController;
-    CompetitiveMemberController competitiveMemberController;
-    FinanceHandler financeHandler;
-    FileHandler fileHandler;
+    private Scanner scanner;
+    private Club club;
+    private MemberController memberController;
+    private CompetitiveMemberController competitiveMemberController;
+    private FinanceHandler financeHandler;
+    private FileHandler fileHandler;
 
     public UserInterface() {
         this.scanner = new Scanner(System.in);
@@ -114,23 +116,41 @@ public class UserInterface {
     }
 
     public void financeMenu() {
-
         boolean b = true;
         while (b) {
             System.out.println();
-            System.out.println("1. Show unpaid members");
-            System.out.println("2. Show yearly payment overview");
-            System.out.println("3. Return to main menu");
+            System.out.println("1. Show members with outstanding payments");
+            System.out.println("2. Register payment");
+            System.out.println("3. View expected yearly income");
+            System.out.println("4. Return to main menu");
 
             try {
                 int input = scanner.nextInt();
                 scanner.nextLine();
+
                 switch (input) {
-                    //case 1 -> unpaidMenu();          // mangler lige nu
-                    case 2 -> System.out.println(
-                            "Forventet årlig indtægt:" +
-                                    financeHandler.getTotalAnnualIncome());
-                    case 3 -> b = false;             // gør det muligt at vende tilbage
+                    case 1 -> {
+                        ArrayList<Member> debtors = financeHandler.getMembersInDebt();
+                        if (debtors.isEmpty()) {
+                            System.out.println("There are no members in debt.");
+                        } else {
+                            for (Member debtor : debtors) {
+                                System.out.println("Name: " + debtor.getName() + ", Phonenumber: " + debtor.getPhoneNumber() + ", Amount owed: "  + financeHandler.calculateAnnualMemberFee(debtor) + " kr.");
+                            }
+                        }
+                    }
+                   case 2-> {
+                       System.out.println("Enter phone number for member:");
+                       String phoneNumber = scanner.nextLine();
+                       boolean success = financeHandler.registerPayment(phoneNumber);
+                       if (success) {
+                           System.out.println("Payment registered for phonenumber " + phoneNumber);
+                       } else {
+                           System.out.println("Error! Payment could not be registered for phonenumber " + phoneNumber);
+                       }
+                   }
+                   case 3 -> System.out.println("Expected total income: " + financeHandler.getTotalAnnualIncome() + " kr.");
+                   case 4 -> b = false;
                     default -> System.out.println("Error! Only numbers 1-3 allowed.");
                 }
             } catch (InputMismatchException e){

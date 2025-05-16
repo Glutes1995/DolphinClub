@@ -3,10 +3,10 @@ import Package.*;
 import java.util.ArrayList;
 
 public class CompetitiveMember extends Member {
-    ArrayList<Discipline> discipline;
-    String team;
+    private ArrayList<Discipline> discipline;
+    private String team;
 
-    public CompetitiveMember(String name, int age, long phoneNumber, boolean active, boolean paid, ArrayList<Discipline> discipline, String team) {
+    public CompetitiveMember(String name, int age, String phoneNumber, boolean active, boolean paid, ArrayList<Discipline> discipline, String team) {
         super(name, age, phoneNumber, active, paid);
         this.discipline = discipline;
         this.team = team;

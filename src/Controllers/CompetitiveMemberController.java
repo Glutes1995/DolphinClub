@@ -19,7 +19,7 @@ public class CompetitiveMemberController extends AbstractController {
     public void registerNewCompMember() {
         String name = getName();
         int age = getAge();
-        long phoneNumber = getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
         boolean active = selectMembershipType();
         boolean paid = selectPaymentStatus();
         ArrayList<Discipline> disciplines = selectDisciplines();
@@ -76,10 +76,18 @@ public class CompetitiveMemberController extends AbstractController {
                 System.out.println("That discipline is already selected.");
             }
 
-            System.out.println("Do you want to add another discipline? (yes/no)");
-            String answer = scanner.nextLine().toLowerCase().trim();
-            if (answer.equals("no")) {
-                keepChoosing = false;
+            while (true) {
+                System.out.println("Do you want to add another discipline? (yes/no)");
+                String answer = scanner.nextLine().toLowerCase().trim();
+
+                if (answer.equals("yes")) {
+                    break;
+                } else if (answer.equals("no")) {
+                    keepChoosing = false;
+                    break;
+                } else {
+                    System.out.println("Error! Please type 'yes' or 'no'.");
+                }
             }
         }
         return chosenDisciplines;

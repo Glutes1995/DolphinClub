@@ -1,11 +1,9 @@
 package Package;
-
 import Members.Member;
-
 import java.util.ArrayList;
 
 public class Club {
-    ArrayList<Member> members = new ArrayList<>();
+    private ArrayList<Member> members = new ArrayList<>();
 
     public void addMember(Member member) {
         members.add(member);
