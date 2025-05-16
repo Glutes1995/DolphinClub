@@ -1,5 +1,4 @@
 package Controllers;
-
 import java.util.Scanner;
 
 interface ControllerInterface {

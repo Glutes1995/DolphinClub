@@ -1,11 +1,9 @@
 package Package;
-
 import Controllers.CompetitiveMemberController;
 import Controllers.MemberController;
 import Files.FileHandler;
 import Finance.FinanceHandler;
 import Members.Member;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;

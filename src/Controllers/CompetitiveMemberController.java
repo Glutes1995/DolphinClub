@@ -1,5 +1,4 @@
 package Controllers;
-
 import Package.Club;
 import Package.Discipline;
 import Members.CompetitiveMember;

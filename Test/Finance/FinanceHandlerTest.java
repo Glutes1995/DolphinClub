@@ -11,14 +11,14 @@ class FinanceHandlerTest {
 
     @org.junit.jupiter.api.Test
     void testPassiveMemberFee() {
-        Member passiveMember = new Member("Passive", 35, 20304050,false,true);
+        Member passiveMember = new Member("Passive", 35, "20304050",false,true);
         double expectedPassiveFee = MembershipFee.PASSIVE.getValue();
         assertEquals(expectedPassiveFee, financeHandler.calculateAnnualMemberFee(passiveMember));
     }
 
     @Test
     void testSeniorDiscountFee() {
-        Member seniorDiscountMember = new Member("SeniorDiscount", 65, 10404050,true,true);
+        Member seniorDiscountMember = new Member("SeniorDiscount", 65, "10404050",true,true);
         double expectedSeniorDiscountFee = MembershipFee.SENIOR.getValue() * (1 - MembershipFee.SENIOR_DISCOUNT.getValue());
         assertEquals(expectedSeniorDiscountFee, financeHandler.calculateAnnualMemberFee(seniorDiscountMember));
     }

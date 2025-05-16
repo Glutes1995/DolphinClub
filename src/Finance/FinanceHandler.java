@@ -1,8 +1,6 @@
 package Finance;
-
 import Package.Club;
 import Members.Member;
-
 import java.util.ArrayList;
 
 public class FinanceHandler {
