@@ -22,6 +22,7 @@ public class UserInterface {
         this.memberController = new MemberController(scanner, club);
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
         this.financeHandler = new FinanceHandler(club);
+        this.fileHandler = new FileHandler(club);
     }
 
     public void startProgram() {
