@@ -102,7 +102,7 @@ public class UserInterface {
                             }
                         }
                     }
-                    case 2 -> fileHandler.loadFile();
+                    case 2 -> fileHandler.loadFile("./ClubData/MemberInfo");
                     case 3 -> club.displayMembers();
                     case 4 -> b = false;
                     default -> System.out.println("Error! Only numbers from 1-4 allowed.");

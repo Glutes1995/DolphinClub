@@ -27,4 +27,13 @@ public class Club {
             }
         }
     }
+
+    public String toString() {
+        String info = "name;age;PhoneNumber;active;paid;disciplines;team" + "\n";
+
+        for (Member member : members) {
+            info += member;
+        }
+        return info;
+    }
 }

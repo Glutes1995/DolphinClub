@@ -9,50 +9,70 @@ import Package.*;
 
 public class FileHandler {
     Club club;
-    String path = "./ClubData/MemberInfo";
 
-    public FileHandler (Club club) {
+    public FileHandler(Club club) {
         this.club = club;
     }
 
-    public void saveFile(boolean append) {
+    public void saveFile(String path) {
         try {
-            FileOutputStream fos = new FileOutputStream(path, append);
+            FileOutputStream fos = new FileOutputStream(path, false);
             PrintStream ps = new PrintStream(fos);
-            ps.print(club.getMembers());
-            ps.close();
+            if (path.equals("./ClubData/MemberInfo")) {
+                ps.print(club);
+                ps.close();
+            } else {
+                //ps.print(records);
+                //ps.close();
+            }
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
     }
 
-    public void loadFile() {
+    public void loadFile(String path) {
         try {
             Scanner scanner = new Scanner(new File(path));
 
             while (scanner.hasNextLine()) {
-                String[] arr = scanner.nextLine().split(";");
-                if (!arr[0].contains("Members")) {
-                    if (arr.length == 5) {
-                        String name = arr[0];
-                        int age = Integer.parseInt(arr[1]);
-                        String phoneNumber = arr[2];
-                        boolean active = Boolean.parseBoolean(arr[3]);
-                        boolean paid = Boolean.parseBoolean(arr[4]);
+                //load member file
+                if (path.equals("./ClubData/MemberInfo")) {
+                    String[] arr = scanner.nextLine().split(";");
+                    if (!arr[0].equalsIgnoreCase("name")) {
+                        if (arr.length == 5) {
+                            String name = arr[0];
+                            int age = Integer.parseInt(arr[1]);
+                            String phoneNumber = arr[2];
+                            boolean active = Boolean.parseBoolean(arr[3]);
+                            boolean paid = Boolean.parseBoolean(arr[4]);
 
-                        Member member = new Member(name, age, phoneNumber, active, paid);
-                        club.getMembers().add(member);
-                    } else {
-                        String name = arr[0];
-                        int age = Integer.parseInt(arr[1]);
-                        String phoneNumber = arr[2];
-                        boolean active = Boolean.parseBoolean(arr[3]);
-                        boolean paid = Boolean.parseBoolean(arr[4]);
-                        //Disciplines
-                        String team = arr[6];
+                            Member member = new Member(name, age, phoneNumber, active, paid);
+                            club.getMembers().add(member);
+                        } else {
+                            String name = arr[0];
+                            int age = Integer.parseInt(arr[1]);
+                            String phoneNumber = arr[2];
+                            boolean active = Boolean.parseBoolean(arr[3]);
+                            boolean paid = Boolean.parseBoolean(arr[4]);
+                            //Disciplines
+                            String team = arr[6];
 
-                        CompetitiveMember compMember = new CompetitiveMember(name, age, phoneNumber, active, paid, /*Disciplines*/, team);
-                        club.getMembers().add(compMember);
+                            CompetitiveMember compMember = new CompetitiveMember(name, age, phoneNumber, active, paid, /*Disciplines*/, team);
+                            club.getMembers().add(compMember);
+                        }
+                    }
+                } //load record file
+                else {
+                    String[] arr = scanner.nextLine().split(";");
+                    if (!arr[0].equalsIgnoreCase("time")) {
+                        /*
+                        time
+                        placement
+                        competition
+
+                        Record record = new Record(time, placement, competition);
+                        Record.getRecords().add(record);
+                         */
                     }
                 }
             }
