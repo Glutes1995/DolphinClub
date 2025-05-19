@@ -1,5 +1,4 @@
 package Controllers;
-
 import Package.Club;
 import Members.Member;
 import java.util.Scanner;
@@ -16,7 +15,7 @@ public class MemberController extends AbstractController {
     public void registerNewMember() {
         String name = getName();
         int age = getAge();
-        long phoneNumber = getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
         boolean active = selectMembershipType();
         boolean paid = selectPaymentStatus();
 
@@ -24,3 +23,5 @@ public class MemberController extends AbstractController {
         System.out.println("New member: " + name + " successfully registered.");
     }
 }
+
+
