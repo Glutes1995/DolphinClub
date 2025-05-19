@@ -1,7 +1,6 @@
 package Files;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 import Members.CompetitiveMember;
@@ -16,8 +15,15 @@ public class FileHandler {
         this.club = club;
     }
 
-    public void saveFile() {
-
+    public void saveFile(boolean append) {
+        try {
+            FileOutputStream fos = new FileOutputStream(path, append);
+            PrintStream ps = new PrintStream(fos);
+            ps.print(club.getMembers());
+            ps.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
     }
 
     public void loadFile() {
