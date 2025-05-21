@@ -23,6 +23,7 @@ public class UserInterface {
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
         this.financeHandler = new FinanceHandler(club);
         this.fileHandler = new FileHandler(club);
+        fileHandler.loadFile("./ClubData/MemberInfo");
     }
 
     public void startProgram() {

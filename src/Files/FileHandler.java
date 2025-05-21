@@ -55,7 +55,7 @@ public class FileHandler {
                             String phoneNumber = arr[2];
                             boolean active = Boolean.parseBoolean(arr[3]);
                             boolean paid = Boolean.parseBoolean(arr[4]);
-                            Discipline discipline;
+                            Discipline discipline = null;
                             switch (arr[5]) {
                                 case "Freestyle" -> discipline = Discipline.FREESTYLE;
                                 case "Butterfly" -> discipline = Discipline.BUTTERFLY;
