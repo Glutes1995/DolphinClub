@@ -5,14 +5,10 @@ import Members.Member;
 import java.util.Scanner;
 
 public class MemberController extends AbstractController {
-
-    private Club club;
     FileHandler fileHandler;
-
     public MemberController(Scanner scanner, Club club) {
-        super(scanner);
-        this.club = club;
-        this.fileHandler = new FileHandler(club);
+        super(scanner, club);
+        fileHandler = new FileHandler(club);
     }
 
     public void registerNewMember() {

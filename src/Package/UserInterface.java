@@ -80,9 +80,8 @@ public class UserInterface {
         while (b) {
             System.out.println();
             System.out.println("1. Register new member");
-            System.out.println("2. Load members file");
-            System.out.println("3. View list of current members");
-            System.out.println("4. Return to main menu");
+            System.out.println("2. View list of current members");
+            System.out.println("3. Return to main menu");
             try {
                 int input = scanner.nextInt();
                 scanner.nextLine();
@@ -103,9 +102,8 @@ public class UserInterface {
                             }
                         }
                     }
-                    case 2 -> fileHandler.loadFile("./ClubData/MemberInfo");
-                    case 3 -> club.displayMembers();
-                    case 4 -> b = false;
+                    case 2 -> club.displayMembers();
+                    case 3 -> b = false;
                     default -> System.out.println("Error! Only numbers from 1-4 allowed.");
                 }
             } catch (InputMismatchException e) {

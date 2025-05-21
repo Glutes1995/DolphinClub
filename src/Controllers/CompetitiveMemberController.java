@@ -8,14 +8,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CompetitiveMemberController extends AbstractController {
-
-    private Club club;
     FileHandler fileHandler;
-
     public CompetitiveMemberController(Scanner scanner, Club club) {
-        super(scanner);
-        this.club = club;
-        this.fileHandler = new FileHandler(club);
+        super(scanner, club);
+        fileHandler = new FileHandler(club);
     }
 
     public void registerNewCompMember() {

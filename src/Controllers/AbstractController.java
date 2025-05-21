@@ -2,16 +2,16 @@ package Controllers;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Files.FileHandler;
+import Package.Club;
+
 public abstract class AbstractController implements ControllerInterface {
     protected Scanner scanner;
+    protected Club club;
 
-    public AbstractController(Scanner scanner) {
+    public AbstractController(Scanner scanner, Club club) {
         this.scanner = scanner;
-    }
-
-    @Override
-    public Scanner getScanner() {
-        return scanner;
+        this.club = club;
     }
 
     @Override

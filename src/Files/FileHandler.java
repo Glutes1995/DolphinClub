@@ -1,7 +1,6 @@
 package Files;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Members.CompetitiveMember;
@@ -45,6 +44,8 @@ public class FileHandler {
                             String phoneNumber = arr[2];
                             boolean active = Boolean.parseBoolean(arr[3]);
                             boolean paid = Boolean.parseBoolean(arr[4]);
+                            if (arr[3].equalsIgnoreCase("yes")) active = true;
+                            if (arr[4].equalsIgnoreCase("yes")) paid = true;
                             if (arr.length == 5) {
                                 Member member = new Member(name, age, phoneNumber, active, paid);
                                 club.getMembers().add(member);
