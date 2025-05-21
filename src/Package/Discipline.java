@@ -15,4 +15,8 @@ public enum Discipline {
     public String getDisplayName() {
         return displayName;
     }
+
+    public String toString() {
+        return displayName;
+    }
 }

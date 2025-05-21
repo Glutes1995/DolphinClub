@@ -1,6 +1,7 @@
 package Files;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Members.CompetitiveMember;
@@ -54,10 +55,17 @@ public class FileHandler {
                             String phoneNumber = arr[2];
                             boolean active = Boolean.parseBoolean(arr[3]);
                             boolean paid = Boolean.parseBoolean(arr[4]);
-                            //Disciplines
+                            Discipline discipline;
+                            switch (arr[5]) {
+                                case "Freestyle" -> discipline = Discipline.FREESTYLE;
+                                case "Butterfly" -> discipline = Discipline.BUTTERFLY;
+                                case "Breaststroke" -> discipline = Discipline.BREASTSTROKE;
+                                case "Backstroke" -> discipline = Discipline.BACKSTROKE;
+                                default -> System.out.println("No discipline");
+                            }
                             String team = arr[6];
 
-                            CompetitiveMember compMember = new CompetitiveMember(name, age, phoneNumber, active, paid, /*Disciplines*/, team);
+                            CompetitiveMember compMember = new CompetitiveMember(name, age, phoneNumber, active, paid, discipline ,team);
                             club.getMembers().add(compMember);
                         }
                     }
