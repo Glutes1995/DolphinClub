@@ -1,13 +1,16 @@
 package Finance;
+import Files.FileHandler;
 import Package.Club;
 import Members.Member;
 import java.util.ArrayList;
 
 public class FinanceHandler {
     private Club club;
+    private FileHandler fileHandler;
 
     public FinanceHandler(Club club) {
         this.club = club;
+        this.fileHandler = new FileHandler(club);
     }
 
     public double calculateAnnualMemberFee(Member member) {
@@ -48,6 +51,7 @@ public class FinanceHandler {
             if (String.valueOf(member.getPhoneNumber()).equals(phoneNumber)) {
                 if (!member.isPaid()) {
                     member.setPaid(true);
+                    fileHandler.saveFile("./ClubData/MemberInfo");
                     return true;
                 } else {
                     return false;

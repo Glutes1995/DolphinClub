@@ -1,4 +1,5 @@
 package Controllers;
+import Files.FileHandler;
 import Package.Club;
 import Package.Discipline;
 import Members.CompetitiveMember;
@@ -7,12 +8,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CompetitiveMemberController extends AbstractController {
-
-    private Club club;
-
+    FileHandler fileHandler;
     public CompetitiveMemberController(Scanner scanner, Club club) {
-        super(scanner);
-        this.club = club;
+        super(scanner, club);
+        fileHandler = new FileHandler(club);
     }
 
     public void registerNewCompMember() {
@@ -21,11 +20,45 @@ public class CompetitiveMemberController extends AbstractController {
         String phoneNumber = getPhoneNumber();
         boolean active = selectMembershipType();
         boolean paid = selectPaymentStatus();
-        ArrayList<Discipline> disciplines = selectDisciplines();
+        Discipline discipline = selectDiscipline();
         String team = (age <= 18) ? "junior" : "senior";
 
-        club.addMember(new CompetitiveMember(name, age, phoneNumber, active, paid, disciplines, team));
+        club.addMember(new CompetitiveMember(name, age, phoneNumber, active, paid, discipline, team));
         System.out.println("New competitive member: " + name + " successfully registered.");
+
+        fileHandler.saveFile("./ClubData/MemberInfo");
+    }
+
+
+    private Discipline selectDiscipline() {
+        Discipline chosenDiscipline = null;
+
+        System.out.println("""
+                Choose a discipline:
+                1. Butterfly
+                2. Freestyle
+                3. Backstroke
+                4. Breaststroke
+                """);
+
+        int choise = 0;
+        try {
+            choise = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Error! Please enter a valid number.");
+            scanner.nextLine();
+        }
+
+        switch (choise) {
+            case 1 -> chosenDiscipline = Discipline.BUTTERFLY;
+            case 2 -> chosenDiscipline = Discipline.FREESTYLE;
+            case 3 -> chosenDiscipline = Discipline.BACKSTROKE;
+            case 4 -> chosenDiscipline = Discipline.BREASTSTROKE;
+            default -> System.out.println("Error! Please choose a number between 1 and 4.");
+        }
+
+        return chosenDiscipline;
     }
 
     private ArrayList<Discipline> selectDisciplines() {

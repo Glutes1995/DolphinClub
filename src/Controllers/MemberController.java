@@ -1,15 +1,14 @@
 package Controllers;
+import Files.FileHandler;
 import Package.Club;
 import Members.Member;
 import java.util.Scanner;
 
 public class MemberController extends AbstractController {
-
-    private Club club;
-
+    FileHandler fileHandler;
     public MemberController(Scanner scanner, Club club) {
-        super(scanner);
-        this.club = club;
+        super(scanner, club);
+        fileHandler = new FileHandler(club);
     }
 
     public void registerNewMember() {
@@ -21,6 +20,8 @@ public class MemberController extends AbstractController {
 
         club.addMember(new Member(name, age, phoneNumber, active, paid));
         System.out.println("New member: " + name + " successfully registered.");
+
+        fileHandler.saveFile("./ClubData/MemberInfo");
     }
 }
 
