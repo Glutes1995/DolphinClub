@@ -7,15 +7,15 @@ import Members.CompetitiveMember;
 import Members.Member;
 import Package.*;
 import java.time.LocalDate;
-//import Records.*;
+import Records.*;
+import Records.Record;
 
 public class FileHandler {
     Club club;
-    //RecordManager recordManager;
+    RecordManager recordManager;
 
-    public FileHandler(Club club/*,RecordManager recordManager*/) {
+    public FileHandler(Club club) {
         this.club = club;
-        //this.recordManager = recordManager;
     }
 
     public void saveFile(String path) {
@@ -27,7 +27,7 @@ public class FileHandler {
                 ps.close();
             }
             if (path.equals("./ClubData/MemberRecords")) {
-                //ps.print(recordManager);
+                ps.print(recordManager);
                 ps.close();
             }
         } catch (FileNotFoundException e) {
@@ -38,7 +38,6 @@ public class FileHandler {
     public void loadFile(String path) {
         try {
             Scanner scanner = new Scanner(new File(path));
-            if (club.getMembers().isEmpty()/*&& recordManager.getRecords().isEmpty()*/) {
                 while (scanner.hasNextLine()) {
                     String[] arr = scanner.nextLine().split(";");
                     //load member file
@@ -72,23 +71,19 @@ public class FileHandler {
                     } //load record file
                     else {
                         if (!arr[0].equalsIgnoreCase("type")) {
-                        /*
+
                         String type = arr[0];
                         String phoneNumber = arr[1];
                         Discipline discipline = Discipline.valueOf(arr[2]);
                         double time = Double.parseDouble(arr[3]);
-                        LocalData date = LocalDate.parse(arr[4]);
+                        LocalDate date = LocalDate.parse(arr[4]);
                         String team = arr[5];
 
                         Record record = new Record(phoneNumber, discipline, time, date, type, team);
                         recordManager.getRecords().add(record);
-                         */
                         }
                     }
                 }
-            } else {
-                System.out.println("File has been loaded");
-            }
             scanner.close();
         } catch (IOException e) {
             System.out.println("File not found!");

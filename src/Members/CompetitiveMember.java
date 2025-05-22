@@ -12,20 +12,29 @@ public class CompetitiveMember extends Member {
         this.team = team;
     }
 
-    @Override
-    public String toString() {
-        String isActive;
-        String hasPaid;
-        if (active) {
-            isActive = "yes";
-        } else {
-            isActive = "no";
-        }
-        if (paid) {
-            hasPaid = "yes";
-        } else {
-            hasPaid = "no";
-        }
-        return name + ";" + age + ";" + phoneNumber + ";" + isActive + ";" + hasPaid + ";" + discipline + ";" + team;
+    public String getTeam() {
+        return team;
     }
+
+    public Discipline getDiscipline() {
+        return discipline;
+
+
+    }
+
+        public String toString() {
+            String isActive;
+            String hasPaid;
+            if (active) {
+                isActive = "yes";
+            } else {
+                isActive = "no";
+            }
+            if (paid) {
+                hasPaid = "yes";
+            } else {
+                hasPaid = "no";
+            }
+            return name + ";" + age + ";" + phoneNumber + ";" + isActive + ";" + hasPaid + ";" + discipline + ";" + team;
+        }
 }

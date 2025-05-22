@@ -17,9 +17,7 @@ public class Record {
     private String type;
     private String team;
 
-    public Record(String phoneNumber, Discipline discipline, double timeInSeconds,
-                  LocalDate date, String type, String team) {
-
+    public Record(String phoneNumber, Discipline discipline, double timeInSeconds, LocalDate date, String type, String team) {
         this.phoneNumber = phoneNumber;
         this.discipline = discipline;
         this.timeInSeconds = timeInSeconds;
