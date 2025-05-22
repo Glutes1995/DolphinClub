@@ -19,10 +19,11 @@ public class RecordManager {
     private ArrayList<Record> records = new ArrayList<>();
 
 
-    public RecordManager (Club club, Scanner scanner) {
+    public RecordManager (Club club, Scanner scanner, CompetitiveMemberController competitiveMemberController) {
         this.club = club;
         this.fileHandler = new FileHandler(club);
         this.scanner = scanner;
+        this.competitiveMemberController = competitiveMemberController;
     }
 
     public ArrayList<Record> getRecords() {
@@ -42,6 +43,7 @@ public class RecordManager {
         String phone = scanner.nextLine();
 
         CompetitiveMember cm = competitiveMemberController.findCompetitiveMemberByPhone(phone);
+
         if (cm == null) {
             System.out.println("Medlem ikke fundet.");
             return;

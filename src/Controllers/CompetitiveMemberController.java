@@ -130,15 +130,11 @@ public class CompetitiveMemberController extends AbstractController {
     }
 
     public CompetitiveMember findCompetitiveMemberByPhone(String phone) {
+        CompetitiveMember cm = null;
         for (CompetitiveMember c : getCompetitiveMembers()) {
-            if (c.getPhoneNumber().equals(phone)) {
-                return c;
-                break;
-            } else {
-                System.out.println("Medlem ikke fundet.");
-            }
+            if (c.getPhoneNumber().equals(phone)) cm = c;
         }
-        return
+        return cm;
     }
 
     public ArrayList<CompetitiveMember> getCompetitiveMembers() {

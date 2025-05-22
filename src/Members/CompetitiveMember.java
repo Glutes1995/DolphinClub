@@ -11,14 +11,13 @@ public class CompetitiveMember extends Member {
         this.discipline = discipline;
         this.team = team;
     }
-
+    
     public String getTeam() {
         return team;
     }
 
     public Discipline getDiscipline() {
         return discipline;
-
 
     }
 

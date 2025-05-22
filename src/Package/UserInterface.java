@@ -20,13 +20,13 @@ public class UserInterface {
     private RecordManager recordManager;
 
     public UserInterface() {
-        this.scanner = new Scanner(System.in);
         this.club = new Club();
+        this.scanner = new Scanner(System.in);
         this.memberController = new MemberController(scanner, club);
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
+        this.recordManager = new RecordManager(club, scanner, competitiveMemberController);
         this.financeHandler = new FinanceHandler(club);
         this.fileHandler = new FileHandler(club);
-        this.recordManager = new RecordManager(club, scanner);
         fileHandler.loadFile("./ClubData/MemberInfo");
         /*
         fileHandler.loadFile("./ClubData/MemberRecords");
