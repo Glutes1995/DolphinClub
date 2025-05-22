@@ -1,4 +1,5 @@
 package Controllers;
+import Members.Member;
 import Package.Club;
 import Package.Discipline;
 import Members.CompetitiveMember;
@@ -90,5 +91,24 @@ public class CompetitiveMemberController extends AbstractController {
             }
         }
         return chosenDisciplines;
+    }
+
+    public CompetitiveMember findCompetitiveMemberByPhone(String phone) {
+        for (Member m : club.getMembers()) {
+            if (m instanceof CompetitiveMember cm && cm.getPhoneNumber().equals(phone)) {
+                return cm;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<CompetitiveMember> getCompetitiveMembers() {
+        ArrayList<CompetitiveMember> list = new ArrayList<>();
+        for (Member m : club.getMembers()) {
+            if (m instanceof CompetitiveMember cm) {
+                list.add(cm);
+            }
+        }
+        return list;
     }
 }

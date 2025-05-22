@@ -56,4 +56,15 @@ public class FinanceHandler {
         }
         return false;
     }
+
+    public ArrayList<String> getDebtorInfo() {
+        ArrayList<String> debtors = new ArrayList<>();
+        for (Member debtor : getMembersInDebt()) {
+            debtors.add("Name: " + debtor.getName()
+                    + ", Phonenumber: " + debtor.getPhoneNumber()
+                    + ", Amount owed: " + calculateAnnualMemberFee(debtor) + " kr.");
+        }
+        return debtors;
+    }
+
 }

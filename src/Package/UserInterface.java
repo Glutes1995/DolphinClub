@@ -4,6 +4,8 @@ import Controllers.MemberController;
 import Files.FileHandler;
 import Finance.FinanceHandler;
 import Members.Member;
+import Records.RecordManager;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,6 +17,8 @@ public class UserInterface {
     private CompetitiveMemberController competitiveMemberController;
     private FinanceHandler financeHandler;
     private FileHandler fileHandler;
+    private Record record;
+    private RecordManager recordManager;
 
     public UserInterface() {
         this.scanner = new Scanner(System.in);
@@ -22,6 +26,8 @@ public class UserInterface {
         this.memberController = new MemberController(scanner, club);
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
         this.financeHandler = new FinanceHandler(club);
+        this.record = new Record();
+        this.recordManager = new RecordManager(club, scanner);
     }
 
     public void startProgram() {
@@ -128,30 +134,31 @@ public class UserInterface {
 
                 switch (input) {
                     case 1 -> {
-                        ArrayList<Member> debtors = financeHandler.getMembersInDebt();
+                        ArrayList<String> debtors = financeHandler.getDebtorInfo();
                         if (debtors.isEmpty()) {
                             System.out.println("There are no members in debt.");
                         } else {
-                            for (Member debtor : debtors) {
-                                System.out.println("Name: " + debtor.getName() + ", Phonenumber: " + debtor.getPhoneNumber() + ", Amount owed: "  + financeHandler.calculateAnnualMemberFee(debtor) + " kr.");
+                            for (String debtorInfo : debtors) {
+                                System.out.println(debtorInfo);
                             }
                         }
                     }
-                   case 2-> {
-                       System.out.println("Enter phone number for member:");
-                       String phoneNumber = scanner.nextLine();
-                       boolean success = financeHandler.registerPayment(phoneNumber);
-                       if (success) {
-                           System.out.println("Payment registered for phonenumber " + phoneNumber);
-                       } else {
-                           System.out.println("Error! Payment could not be registered for phonenumber " + phoneNumber);
-                       }
-                   }
-                   case 3 -> System.out.println("Expected total income: " + financeHandler.getTotalAnnualIncome() + " kr.");
-                   case 4 -> b = false;
-                    default -> System.out.println("Error! Only numbers 1-3 allowed.");
+                    case 2 -> {
+                        System.out.println("Enter phone number for member:");
+                        String phoneNumber = scanner.nextLine();
+                        boolean success = financeHandler.registerPayment(phoneNumber);
+                        if (success) {
+                            System.out.println("Payment registered for phonenumber " + phoneNumber);
+                        } else {
+                            System.out.println("Error! Payment could not be registered for phonenumber " + phoneNumber);
+                        }
+                    }
+                    case 3 ->
+                            System.out.println("Expected total income: " + financeHandler.getTotalAnnualIncome() + " kr.");
+                    case 4 -> b = false;
+                    default -> System.out.println("Error! Only numbers 1-4 allowed.");
                 }
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Error! Only numbers allowed");
                 scanner.nextLine();
             }
@@ -159,10 +166,53 @@ public class UserInterface {
     }
 
     public void swimmerMenu() {
-        System.out.println();
-        System.out.println("1. Top 5 display");
-        System.out.println("2. Tournament results");
-        System.out.println("3. Training results");
-        System.out.println("4. Return to main menu");
+        boolean b = true;
+        while (b) {
+            System.out.println();
+            System.out.println("1. Register new record");
+            System.out.println("2. Show top 5 by discipline");
+            System.out.println("3. Return to main menu.");
+
+            try {
+                int choice = scanner.nextInt();
+                scanner.nextLine(); // fanger linjeskift
+
+                switch (choice) {
+                    case 1 -> recordManager.registerNewRecord();
+
+                    case 2 -> { // recordManager.
+                        // Her vælger brugeren en disciplin med tal
+                        System.out.println("Choose discipline:");
+                        System.out.println("1. Butterfly");
+                        System.out.println("2. Freestyle");
+                        System.out.println("3. Backstroke");
+                        System.out.println("4. Breaststroke");
+
+                        int disciplineChoice = scanner.nextInt();
+                        scanner.nextLine(); // fanger linjeskift
+
+                        Discipline valgt = null;
+
+                        if (disciplineChoice == 1) valgt = Discipline.BUTTERFLY;
+                        else if (disciplineChoice == 2) valgt = Discipline.FREESTYLE;
+                        else if (disciplineChoice == 3) valgt = Discipline.BACKSTROKE;
+                        else if (disciplineChoice == 4) valgt = Discipline.BREASTSTROKE;
+                        else {
+                            System.out.println("Invalid choice.");
+                            break;
+                        }
+
+                        recordManager.showTop5PerDiscipline(valgt);
+                    }
+
+                    case 3 -> b = false;
+
+                    default -> System.out.println("Only numbers from 1 to 3 are allowed.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error! Please enter a number.");
+                scanner.nextLine(); // rydder scanner
+            }
+        }
     }
 }
