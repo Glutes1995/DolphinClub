@@ -60,7 +60,7 @@ public class RecordManager {
         records.add(record);
 
         fileHandler.saveFile(FILE_PATH);
-        System.out.println("Rekord gemt.");
+        System.out.println("Record has been saved");
     }
 
     public void showTop5PerDiscipline(Discipline valgtDisciplin) {

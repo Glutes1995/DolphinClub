@@ -5,6 +5,7 @@ import Package.Club;
 import Package.Discipline;
 import Members.CompetitiveMember;
 import Records.RecordManager;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -129,12 +130,15 @@ public class CompetitiveMemberController extends AbstractController {
     }
 
     public CompetitiveMember findCompetitiveMemberByPhone(String phone) {
-        for (CompetitiveMember cm : getCompetitiveMembers()) {
-            if (cm.getPhoneNumber().equals(phone)) {
-                return cm;
+        for (CompetitiveMember c : getCompetitiveMembers()) {
+            if (c.getPhoneNumber().equals(phone)) {
+                
+                break;
+            } else {
+                System.out.println("Medlem ikke fundet.");
             }
         }
-        return null;
+        return
     }
 
     public ArrayList<CompetitiveMember> getCompetitiveMembers() {
