@@ -132,7 +132,7 @@ public class CompetitiveMemberController extends AbstractController {
     public CompetitiveMember findCompetitiveMemberByPhone(String phone) {
         for (CompetitiveMember c : getCompetitiveMembers()) {
             if (c.getPhoneNumber().equals(phone)) {
-                
+                return c;
                 break;
             } else {
                 System.out.println("Medlem ikke fundet.");
