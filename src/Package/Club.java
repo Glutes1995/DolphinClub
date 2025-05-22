@@ -28,4 +28,11 @@ public class Club {
         }
     }
 
+    public String toString() {
+        String info = "name;age;PhoneNumber;active;paid;discipline;team" + "\n";
+        for (Member member : members) {
+            info += member + "\n";
+        }
+        return info;
+    }
 }

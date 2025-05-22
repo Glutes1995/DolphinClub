@@ -1,11 +1,6 @@
 package Members;
-
 import Package.*;
-
 import java.util.ArrayList;
-
-import Records.*;
-import Package.Record;
 
 public class CompetitiveMember extends Member {
     private Discipline discipline;
@@ -16,27 +11,21 @@ public class CompetitiveMember extends Member {
         this.discipline = discipline;
         this.team = team;
     }
-    
-    public String getTeam() {
-        return team;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
 
     @Override
     public String toString() {
-        return "CompetitiveMember{" +
-                "discipline=" + discipline +
-                ", team='" + team + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", phoneNumber=" + phoneNumber +
-                ", active='" + active + '\'' +
-                ", paid=" + paid +
-                '}';
+        String isActive;
+        String hasPaid;
+        if (active) {
+            isActive = "yes";
+        } else {
+            isActive = "no";
+        }
+        if (paid) {
+            hasPaid = "yes";
+        } else {
+            hasPaid = "no";
+        }
+        return name + ";" + age + ";" + phoneNumber + ";" + isActive + ";" + hasPaid + ";" + discipline + ";" + team;
     }
-
-
 }

@@ -17,13 +17,19 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Members.Member{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", phoneNumber=" + phoneNumber +
-                ", active='" + active + '\'' +
-                ", paid=" + paid +
-                '}';
+        String isActive;
+        String hasPaid;
+        if (active) {
+            isActive = "yes";
+        } else {
+            isActive = "no";
+        }
+        if (paid) {
+            hasPaid = "yes";
+        } else {
+            hasPaid = "no";
+        }
+        return name + ";" + age + ";" + phoneNumber + ";" + isActive + ";" + hasPaid;
     }
 
     public String getName() {
