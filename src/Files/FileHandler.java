@@ -52,22 +52,15 @@ public class FileHandler {
                             String name = arr[0];
                             int age = Integer.parseInt(arr[1]);
                             String phoneNumber = arr[2];
-                            boolean active = Boolean.parseBoolean(arr[3]);
-                            boolean paid = Boolean.parseBoolean(arr[4]);
-                            if (arr[3].equalsIgnoreCase("yes")) active = true;
-                            if (arr[4].equalsIgnoreCase("yes")) paid = true;
+                            boolean active = arr[3].equalsIgnoreCase("yes");
+                            boolean paid = arr[4].equalsIgnoreCase("yes");
+                            //creates standard member
                             if (arr.length == 5) {
                                 Member member = new Member(name, age, phoneNumber, active, paid);
                                 club.getMembers().add(member);
+                            //creates competitive member
                             } else {
-                                Discipline discipline = null;
-                                switch (arr[5]) {
-                                    case "Freestyle" -> discipline = Discipline.FREESTYLE;
-                                    case "Butterfly" -> discipline = Discipline.BUTTERFLY;
-                                    case "Breaststroke" -> discipline = Discipline.BREASTSTROKE;
-                                    case "Backstroke" -> discipline = Discipline.BACKSTROKE;
-                                    default -> System.out.println("No discipline");
-                                }
+                                Discipline discipline = Discipline.valueOf(arr[5].toUpperCase());
                                 String team = arr[6];
 
                                 CompetitiveMember compMember = new CompetitiveMember(name, age, phoneNumber, active, paid, discipline, team);
