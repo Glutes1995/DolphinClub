@@ -3,6 +3,7 @@ package Files;
 import java.io.*;
 import java.util.Scanner;
 
+import Controllers.CompetitiveMemberController;
 import Members.CompetitiveMember;
 import Members.Member;
 import Package.*;
@@ -14,7 +15,12 @@ public class FileHandler {
     Club club;
     RecordManager recordManager;
 
-    public FileHandler(Club club) {
+    public FileHandler(Club club, RecordManager recordManager) {
+        this.club = club;
+        this.recordManager = recordManager;
+    }
+
+    public FileHandler(Club club){
         this.club = club;
     }
 
@@ -74,7 +80,7 @@ public class FileHandler {
 
                         String type = arr[0];
                         String phoneNumber = arr[1];
-                        Discipline discipline = Discipline.valueOf(arr[2]);
+                        Discipline discipline = Discipline.valueOf(arr[2].toUpperCase());
                         double time = Double.parseDouble(arr[3]);
                         LocalDate date = LocalDate.parse(arr[4]);
                         String team = arr[5];

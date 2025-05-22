@@ -26,11 +26,9 @@ public class UserInterface {
         this.competitiveMemberController = new CompetitiveMemberController(scanner, club);
         this.recordManager = new RecordManager(club, scanner, competitiveMemberController);
         this.financeHandler = new FinanceHandler(club);
-        this.fileHandler = new FileHandler(club);
+        this.fileHandler = new FileHandler(club, recordManager);
         fileHandler.loadFile("./ClubData/MemberInfo");
-        /*
         fileHandler.loadFile("./ClubData/MemberRecords");
-*/
     }
 
     public void startProgram() {
@@ -99,10 +97,10 @@ public class UserInterface {
                             String answer = scanner.nextLine().trim().toLowerCase();
 
                             if (answer.equals("yes")) {
-                                competitiveMemberController.registerNewCompMember();
+                                competitiveMemberController.registerNewCompMember(fileHandler);
                                 break;
                             } else if (answer.equals("no")) {
-                                memberController.registerNewMember();
+                                memberController.registerNewMember(fileHandler);
                                 break;
                             } else {
                                 System.out.println("Error! Only 'yes' or 'no' is allowed.");
@@ -178,7 +176,7 @@ public class UserInterface {
                 scanner.nextLine(); // fanger linjeskift
 
                 switch (choice) {
-                    case 1 -> recordManager.registerNewRecord();
+                    case 1 -> recordManager.registerNewRecord(fileHandler);
 
                     case 2 -> { // recordManager.
                         // Her vælger brugeren en disciplin med tal

@@ -12,13 +12,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CompetitiveMemberController extends AbstractController {
-    FileHandler fileHandler;
+
     public CompetitiveMemberController(Scanner scanner, Club club) {
         super(scanner, club);
-        fileHandler = new FileHandler(club);
     }
 
-    public void registerNewCompMember() {
+    public void registerNewCompMember(FileHandler fileHandler) {
         String name = getName();
         int age = getAge();
         String phoneNumber = getPhoneNumber();

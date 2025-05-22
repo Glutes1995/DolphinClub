@@ -12,16 +12,12 @@ import java.util.Scanner;
 
 public class RecordManager {
     Scanner scanner;
-    private Club club;
-    private FileHandler fileHandler;
     private CompetitiveMemberController competitiveMemberController;
     private static final String FILE_PATH = "./ClubData/MemberRecords";
     private ArrayList<Record> records = new ArrayList<>();
 
 
     public RecordManager (Club club, Scanner scanner, CompetitiveMemberController competitiveMemberController) {
-        this.club = club;
-        this.fileHandler = new FileHandler(club);
         this.scanner = scanner;
         this.competitiveMemberController = competitiveMemberController;
     }
@@ -31,14 +27,14 @@ public class RecordManager {
     }
 
     public String toString() {
-        String info = "type;phoneNumber;discipline;timeInSeconds;date;team" + "\n";
+        String info = "type;phoneNumber;discipline;timeInSeconds;date;team";
         for (Record record : records) {
-            info += record + "\n";
+            info += "\n" + record;
         }
         return info;
     }
 
-    public void registerNewRecord() {
+    public void registerNewRecord(FileHandler fileHandler) {
         System.out.println("Indtast telefonnummer på svømmeren:");
         String phone = scanner.nextLine();
 

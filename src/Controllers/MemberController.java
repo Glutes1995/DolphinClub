@@ -5,13 +5,11 @@ import Members.Member;
 import java.util.Scanner;
 
 public class MemberController extends AbstractController {
-    FileHandler fileHandler;
     public MemberController(Scanner scanner, Club club) {
         super(scanner, club);
-        fileHandler = new FileHandler(club);
     }
 
-    public void registerNewMember() {
+    public void registerNewMember(FileHandler fileHandler) {
         String name = getName();
         int age = getAge();
         String phoneNumber = getPhoneNumber();

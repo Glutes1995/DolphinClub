@@ -29,9 +29,9 @@ public class Club {
     }
 
     public String toString() {
-        String info = "name;age;PhoneNumber;active;paid;discipline;team" + "\n";
+        String info = "name;age;PhoneNumber;active;paid;discipline;team";
         for (Member member : members) {
-            info += member + "\n";
+            info += "\n" + member;
         }
         return info;
     }
