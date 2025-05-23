@@ -1,11 +1,11 @@
 package Controllers;
+
 import Files.FileHandler;
 import Members.Member;
 import Package.Club;
 import Package.Discipline;
 import Members.CompetitiveMember;
-import Records.RecordManager;
-import org.w3c.dom.ls.LSOutput;
+
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -145,5 +145,4 @@ public class CompetitiveMemberController extends AbstractController {
         }
         return list;
     }
-
 }

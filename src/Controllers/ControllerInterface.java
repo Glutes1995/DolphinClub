@@ -1,5 +1,4 @@
 package Controllers;
-import java.util.Scanner;
 
 interface ControllerInterface {
     String getName();
@@ -8,5 +7,3 @@ interface ControllerInterface {
     boolean selectMembershipType();
     boolean selectPaymentStatus();
 }
-
-

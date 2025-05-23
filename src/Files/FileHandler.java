@@ -3,7 +3,6 @@ package Files;
 import java.io.*;
 import java.util.Scanner;
 
-import Controllers.CompetitiveMemberController;
 import Members.CompetitiveMember;
 import Members.Member;
 import Package.*;

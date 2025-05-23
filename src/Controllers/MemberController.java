@@ -22,5 +22,3 @@ public class MemberController extends AbstractController {
         fileHandler.saveFile("./ClubData/MemberInfo");
     }
 }
-
-
