@@ -1,4 +1,9 @@
 type;phoneNumber;discipline;timeInSeconds;date;team
-træning;00000000;Butterfly;90.5;2025-05-22;senior
 konkurrence;09876543;Freestyle;70.6;2025-05-22;junior
+træning;00334411;Freestyle;75.5;2025-05-23;junior
+træning;33001144;Freestyle;78.2;2025-05-23;Junior
+træning;11440033;Freestyle;86.4;2025-05-23;Junior
+træning;44001133;Freestyle;88.7;2025-05-23;Junior
+træning;66884499;Freestyle;79.5;2025-05-23;Junior
+træning;00000000;Butterfly;90.5;2025-05-22;senior
 træning;12345678;Butterfly;120.0;2025-05-22;senior
